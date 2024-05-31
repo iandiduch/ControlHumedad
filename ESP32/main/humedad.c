@@ -119,7 +119,7 @@ void http_post_task(void *pvParameters) {
         ESP_LOGI(TAG, "Calculated Humidity 2: %.2f%%", humidity_2);
 
         char post_data[200];
-        snprintf(post_data, sizeof(post_data), "{\"humidity1\":%.2f,\"humidity2\":%.2f}", humidity_1, humidity_2);
+        snprintf(post_data, sizeof(post_data), "{\"humidity1\":%.2f%%,\"humidity2\":%.2f%%}", humidity_1, humidity_2);
 
         esp_http_client_set_url(client, "http://192.168.211.136:5000/post");  // URL de tu endpoint Flask
         esp_http_client_set_method(client, HTTP_METHOD_POST);
@@ -136,7 +136,7 @@ void http_post_task(void *pvParameters) {
             ESP_LOGE(TAG, "HTTP POST request failed: %s", esp_err_to_name(err));
         }
 
-        vTaskDelay(1000 / portTICK_PERIOD_MS);  // Esperar 1 segundo entre cada solicitud
+        vTaskDelay(5000 / portTICK_PERIOD_MS);  // Esperar 1 segundo entre cada solicitud
     }
 
     esp_http_client_cleanup(client);
