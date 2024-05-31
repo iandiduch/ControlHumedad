@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/CMakeFiles/bootloader
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/CMakeFiles/bootloader.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/CMakeFiles/bootloader-complete.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
