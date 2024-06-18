@@ -8,8 +8,8 @@
 #include "esp_http_client.h"
 #include "driver/adc.h"
 
-#define WIFI_SSID "MODERNIZACION UNCAUS"
-#define WIFI_PASS ""
+#define WIFI_SSID "Ing en Sistemas"
+#define WIFI_PASS "ingenieros26"
 
 static const char *TAG = "HTTP_CLIENT";
 
@@ -89,39 +89,45 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt) {
 
 void http_post_task(void *pvParameters) {
     esp_http_client_config_t config = {
-        .url = "http://192.168.211.136:5000/post",  // URL de tu endpoint Flask
+        .url = "http://192.168.0.103:5000/post",  // URL de tu endpoint Flask
         .event_handler = _http_event_handler,
     };
 
     esp_http_client_handle_t client = esp_http_client_init(&config);
 
     while (1) {
-        // Leer del canal ADC1_0 (GPIO36) y ADC1_3 (GPIO39)
+        // Leer del canal ADC1_0 (GPIO36), ADC1_3 (GPIO39), y ADC1_6
         int adc_reading_1 = adc1_get_raw(ADC1_CHANNEL_0);  
         int adc_reading_2 = adc1_get_raw(ADC1_CHANNEL_3);
-
-        // Verificar los valores leídos del ADC para debug
+	int adc_reading_3 = adc1_get_raw(ADC1_CHANNEL_6);
+        
+	// Verificar los valores leídos del ADC para debug
         ESP_LOGI(TAG, "ADC Reading 1: %d", adc_reading_1);
         ESP_LOGI(TAG, "ADC Reading 2: %d", adc_reading_2);
+	ESP_LOGI(TAG, "ADC Reading 3: %d", adc_reading_3);
 
         // Validar el rango de los valores del ADC
         if (adc_reading_1 < 0) adc_reading_1 = 0;
         if (adc_reading_1 > 4095) adc_reading_1 = 4095;
         if (adc_reading_2 < 0) adc_reading_2 = 0;
         if (adc_reading_2 > 4095) adc_reading_2 = 4095;
+	if (adc_reading_3 < 0) adc_reading_3 = 0;
+        if (adc_reading_3 > 4095) adc_reading_3 = 4095;
 
         // Conversión de los valores ADC a % de humedad
-        float humidity_1 = (1.0 - ((float)adc_reading_1 / 4095.0)) * 100.0;
-        float humidity_2 = (1.0 - ((float)adc_reading_2 / 4095.0)) * 100.0;
+        float humidity1 = (1.0 - ((float)adc_reading_1 / 4095.0)) * 100.0;
+        float humidity2 = (1.0 - ((float)adc_reading_2 / 4095.0)) * 100.0;
+        float humidity3 = (1.0 - ((float)adc_reading_3 / 4095.0)) * 100.0;
 
         // Verificar los valores calculados de humedad para debug
-        ESP_LOGI(TAG, "Calculated Humidity 1: %.2f%%", humidity_1);
-        ESP_LOGI(TAG, "Calculated Humidity 2: %.2f%%", humidity_2);
+        ESP_LOGI(TAG, "Calculated Humidity 1: %.2f%%", humidity1);
+        ESP_LOGI(TAG, "Calculated Humidity 2: %.2f%%", humidity2);
+	ESP_LOGI(TAG, "Calculated Humidity 3: %.2f%%", humidity3);
 
         char post_data[200];
-        snprintf(post_data, sizeof(post_data), "{\"humidity1\":%.2f%%,\"humidity2\":%.2f%%}", humidity_1, humidity_2);
+        snprintf(post_data, sizeof(post_data), "{\"humidity1\":%.2f,\"humidity2\":%.2f, \"humidity3\":%.2f}", humidity1, humidity2, humidity3);
 
-        esp_http_client_set_url(client, "http://192.168.211.136:5000/post");  // URL de tu endpoint Flask
+        esp_http_client_set_url(client, "http://192.168.0.103:5000/post");  // URL de tu endpoint Flask
         esp_http_client_set_method(client, HTTP_METHOD_POST);
         esp_http_client_set_header(client, "Content-Type", "application/json");
         esp_http_client_set_post_field(client, post_data, strlen(post_data));
@@ -157,7 +163,7 @@ void app_main(void) {
     adc1_config_width(ADC_WIDTH_BIT_12); // Configurar el ancho de 12 bits para la lectura ADC
     adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 0
     adc1_config_channel_atten(ADC1_CHANNEL_3, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 3
-
+    adc1_config_channel_atten(ADC1_CHANNEL_6, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 6
     // Crear tareas con diferentes tamaños de pila
     xTaskCreate(&http_post_task, "http_post_task", 8192, NULL, 5, NULL); // Tamaño de pila de 8192 bytes
 }

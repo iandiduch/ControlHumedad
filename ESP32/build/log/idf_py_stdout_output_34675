@@ -1,0 +1,200 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader/esp-idf/esptool_py && /home/ian/.espressif/python_env/idf5.2_py3.10_env/bin/python /home/ian/ESP32/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/bootloader/bootloader.bin
+Bootloader binary size 0x6860 bytes. 0x7a0 bytes (7%) free.
+[2/8] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/humedad.c.obj
+In file included from /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:9:
+/home/ian/ESP32/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+In file included from /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:6:
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c: In function 'wifi_event_handler':
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:50: warning: passing argument 1 of 'ip4addr_ntoa' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |                                                  ^~~~~~~~~~~~~~~~~~
+      |                                                  |
+      |                                                  esp_ip4_addr_t * {aka struct esp_ip4_addr *}
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:436:137: note: in definition of macro 'ESP_LOG_LEVEL'
+  436 |         if (level==ESP_LOG_ERROR )          { esp_log_write(ESP_LOG_ERROR,      tag, LOG_FORMAT(E, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                         ^~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:9: note: in expansion of macro 'ESP_LOGI'
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |         ^~~~~~~~
+In file included from /home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:43,
+                 from /home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:46,
+                 from /home/ian/ESP32/esp-idf/components/lwip/include/lwip/sockets.h:8,
+                 from /home/ian/ESP32/esp-idf/components/lwip/port/esp32xx/include/sys/socket.h:15,
+                 from /home/ian/ESP32/esp-idf/components/esp_http_client/include/esp_http_client.h:13,
+                 from /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:8:
+/home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:38: note: expected 'const ip4_addr_t *' {aka 'const struct ip4_addr *'} but argument is of type 'esp_ip4_addr_t *' {aka 'struct esp_ip4_addr *'}
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                    ~~~~~~~~~~~~~~~~~~^~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:50: warning: passing argument 1 of 'ip4addr_ntoa' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |                                                  ^~~~~~~~~~~~~~~~~~
+      |                                                  |
+      |                                                  esp_ip4_addr_t * {aka struct esp_ip4_addr *}
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:437:137: note: in definition of macro 'ESP_LOG_LEVEL'
+  437 |         else if (level==ESP_LOG_WARN )      { esp_log_write(ESP_LOG_WARN,       tag, LOG_FORMAT(W, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                         ^~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:9: note: in expansion of macro 'ESP_LOGI'
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |         ^~~~~~~~
+/home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:38: note: expected 'const ip4_addr_t *' {aka 'const struct ip4_addr *'} but argument is of type 'esp_ip4_addr_t *' {aka 'struct esp_ip4_addr *'}
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                    ~~~~~~~~~~~~~~~~~~^~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:50: warning: passing argument 1 of 'ip4addr_ntoa' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |                                                  ^~~~~~~~~~~~~~~~~~
+      |                                                  |
+      |                                                  esp_ip4_addr_t * {aka struct esp_ip4_addr *}
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:438:137: note: in definition of macro 'ESP_LOG_LEVEL'
+  438 |         else if (level==ESP_LOG_DEBUG )     { esp_log_write(ESP_LOG_DEBUG,      tag, LOG_FORMAT(D, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                         ^~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:9: note: in expansion of macro 'ESP_LOGI'
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |         ^~~~~~~~
+/home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:38: note: expected 'const ip4_addr_t *' {aka 'const struct ip4_addr *'} but argument is of type 'esp_ip4_addr_t *' {aka 'struct esp_ip4_addr *'}
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                    ~~~~~~~~~~~~~~~~~~^~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:50: warning: passing argument 1 of 'ip4addr_ntoa' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |                                                  ^~~~~~~~~~~~~~~~~~
+      |                                                  |
+      |                                                  esp_ip4_addr_t * {aka struct esp_ip4_addr *}
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:439:137: note: in definition of macro 'ESP_LOG_LEVEL'
+  439 |         else if (level==ESP_LOG_VERBOSE )   { esp_log_write(ESP_LOG_VERBOSE,    tag, LOG_FORMAT(V, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                         ^~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:9: note: in expansion of macro 'ESP_LOGI'
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |         ^~~~~~~~
+/home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:38: note: expected 'const ip4_addr_t *' {aka 'const struct ip4_addr *'} but argument is of type 'esp_ip4_addr_t *' {aka 'struct esp_ip4_addr *'}
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                    ~~~~~~~~~~~~~~~~~~^~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:50: warning: passing argument 1 of 'ip4addr_ntoa' from incompatible pointer type [-Wincompatible-pointer-types]
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |                                                  ^~~~~~~~~~~~~~~~~~
+      |                                                  |
+      |                                                  esp_ip4_addr_t * {aka struct esp_ip4_addr *}
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:440:137: note: in definition of macro 'ESP_LOG_LEVEL'
+  440 |         else                                { esp_log_write(ESP_LOG_INFO,       tag, LOG_FORMAT(I, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                         ^~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/log/include/esp_log.h:368:38: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  368 | #define ESP_LOGI( tag, format, ... ) ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO,    tag, format, ##__VA_ARGS__)
+      |                                      ^~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:25:9: note: in expansion of macro 'ESP_LOGI'
+   25 |         ESP_LOGI(TAG, "Got IP: %s", ip4addr_ntoa(&event->ip_info.ip));
+      |         ^~~~~~~~
+/home/ian/ESP32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:38: note: expected 'const ip4_addr_t *' {aka 'const struct ip4_addr *'} but argument is of type 'esp_ip4_addr_t *' {aka 'struct esp_ip4_addr *'}
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                    ~~~~~~~~~~~~~~~~~~^~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c: In function 'app_main':
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:164:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+  164 |     adc1_config_channel_atten(ADC1_CHANNEL_0, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 0
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/ian/ESP32/esp-idf/components/driver/deprecated/driver/adc_types_legacy.h:8,
+                 from /home/ian/ESP32/esp-idf/components/driver/deprecated/driver/adc.h:15:
+/home/ian/ESP32/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:165:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+  165 |     adc1_config_channel_atten(ADC1_CHANNEL_3, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 3
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/main/humedad.c:166:5: warning: 'ADC_ATTEN_DB_11' is deprecated [-Wdeprecated-declarations]
+  166 |     adc1_config_channel_atten(ADC1_CHANNEL_6, ADC_ATTEN_DB_11); // Configurar la atenuación para 0-3.3V en el canal 6
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/ian/ESP32/esp-idf/components/hal/include/hal/adc_types.h:51:5: note: declared here
+   51 |     ADC_ATTEN_DB_11 __attribute__((deprecated)) = ADC_ATTEN_DB_12,  ///<This is deprecated, it behaves the same as `ADC_ATTEN_DB_12`
+      |     ^~~~~~~~~~~~~~~
+[3/8] Linking C static library esp-idf/main/libmain.a
+[4/8] Generating ld/sections.ld
+[5/8] Linking CXX executable my_project.elf
+[6/8] Generating binary image from built executable
+esptool.py v4.7.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/my_project.bin
+[7/8] cd /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/esp-idf/esptool_py && /home/ian/.espressif/python_env/idf5.2_py3.10_env/bin/python /home/ian/ESP32/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/partition_table/partition-table.bin /home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build/my_project.bin
+my_project.bin binary size 0xdcc30 bytes. Smallest app partition is 0x100000 bytes. 0x233d0 bytes (14%) free.
+[7/8] cd /home/ian/ESP32/esp-idf/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/ian/ESP32/esp-idf -D "SERIAL_TOOL=/home/ian/.espressif/python_env/idf5.2_py3.10_env/bin/python;;/home/ian/ESP32/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/ian/ESP32/esp-idf/examples/ControlHumedad/ESP32/build -P /home/ian/ESP32/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 my_project.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.7.0
+Serial port /dev/ttyUSB0
+Connecting.....
+Chip is ESP32-D0WD-V3 (revision v3.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: b0:a7:32:dd:09:60
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000ecfff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26720 bytes to 16356...
+Writing at 0x00001000... (100 %)
+Wrote 26720 bytes (16356 compressed) at 0x00001000 in 0.5 seconds (effective 407.8 kbit/s)...
+Hash of data verified.
+Compressed 904240 bytes to 564636...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001d16b... (5 %)
+Writing at 0x0002740a... (8 %)
+Writing at 0x0002ce20... (11 %)
+Writing at 0x00033f65... (14 %)
+Writing at 0x0003e5a6... (17 %)
+Writing at 0x00043f57... (20 %)
+Writing at 0x00049d27... (22 %)
+Writing at 0x0004fac1... (25 %)
+Writing at 0x0005583a... (28 %)
+Writing at 0x0005b500... (31 %)
+Writing at 0x000608ca... (34 %)
+Writing at 0x00065c72... (37 %)
+Writing at 0x0006b19c... (40 %)
+Writing at 0x000704ed... (42 %)
+Writing at 0x00075bbf... (45 %)
+Writing at 0x0007b3fb... (48 %)
+Writing at 0x000813be... (51 %)
+Writing at 0x00086e65... (54 %)
+Writing at 0x0008c920... (57 %)
+Writing at 0x00092512... (60 %)
+Writing at 0x0009812a... (62 %)
+Writing at 0x0009d95a... (65 %)
+Writing at 0x000a37a5... (68 %)
+Writing at 0x000a9d1f... (71 %)
+Writing at 0x000af817... (74 %)
+Writing at 0x000b5fce... (77 %)
+Writing at 0x000bbaad... (80 %)
+Writing at 0x000c1423... (82 %)
+Writing at 0x000c798c... (85 %)
+Writing at 0x000d2a52... (88 %)
+Writing at 0x000d8adb... (91 %)
+Writing at 0x000de97a... (94 %)
+Writing at 0x000e4de6... (97 %)
+Writing at 0x000ea10d... (100 %)
+Wrote 904240 bytes (564636 compressed) at 0x00010000 in 12.7 seconds (effective 570.3 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 1749.0 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
